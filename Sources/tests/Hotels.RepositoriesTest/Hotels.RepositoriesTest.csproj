@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Hotels.DbContext\Hotels.DbConnections.csproj" />
+    <ProjectReference Include="..\..\src\Hotels.Entities\Hotels.Entities.csproj" />
+    <ProjectReference Include="..\..\src\Hotels.IDbConText\Hotels.IDbConnections.csproj" />
+    <ProjectReference Include="..\..\src\Hotels.IRepositories\Hotels.IRepositories.csproj" />
+    <ProjectReference Include="..\..\src\Hotels.Repositories\Hotels.Repositories.csproj" />
+    <ProjectReference Include="..\Hotel.Test.Utilities\Hotel.Test.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
