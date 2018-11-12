@@ -168,6 +168,10 @@ namespace Hotels.DbConnections
                 .HasColumnName("room_type_name")
                 .IsRequired();
 
+            builder.Property(p => p.IsActive)
+                .HasColumnName("room_type_is_active")
+                .HasDefaultValue(true);
+
             builder.Property(p => p.CreateBy)
                 .HasColumnName("room_type_create_by")
                 .IsRequired();

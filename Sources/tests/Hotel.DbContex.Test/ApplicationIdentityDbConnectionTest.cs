@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
-using Hotel.Test.Utilities;
 using Hotels.Entities.Audits;
 using Hotels.Entities.Masters;
 using Hotels.IDbConnections;
+using HotelTest.Utilities;
 using Xunit;
 
-namespace Hotel.DbContextTest
+namespace Hotels.DbContextTest
 {
     public class ApplicationIdentityDbConnectionTest
     {

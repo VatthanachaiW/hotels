@@ -14,10 +14,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Hotels.DbContext\Hotels.DbConnections.csproj" />
-    <ProjectReference Include="..\..\src\Hotels.Entities\Hotels.Entities.csproj" />
     <ProjectReference Include="..\..\src\Hotels.IDbConText\Hotels.IDbConnections.csproj" />
     <ProjectReference Include="..\..\src\Hotels.IRepositories\Hotels.IRepositories.csproj" />
+    <ProjectReference Include="..\..\src\Hotels.IUnitOfWork\Hotels.IUnitOfWorks.csproj" />
     <ProjectReference Include="..\..\src\Hotels.Repositories\Hotels.Repositories.csproj" />
+    <ProjectReference Include="..\..\src\Hotels.UnitOfWork\Hotels.UnitOfWorks.csproj" />
     <ProjectReference Include="..\Hotel.Test.Utilities\HotelTest.Utilities.csproj" />
   </ItemGroup>
 

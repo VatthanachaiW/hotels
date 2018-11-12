@@ -9,6 +9,7 @@ namespace Hotels.Entities
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
+        public bool IsActive { get; set; }
 
         public Guid CreateBy { get; private set; }
         [DataType(DataType.DateTime)] public DateTime CreateOn { get; private set; }

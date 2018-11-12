@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Hotel.Test.Utilities
+namespace HotelTest.Utilities
 {
     public class ModelValidateHelper
     {

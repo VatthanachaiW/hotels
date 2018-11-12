@@ -6,6 +6,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hotels.Entities\Hotels.Entities.csproj" />
+    <ProjectReference Include="..\Hotels.IServices\Hotels.IServices.csproj" />
+    <ProjectReference Include="..\Hotels.IUnitOfWork\Hotels.IUnitOfWorks.csproj" />
+    <ProjectReference Include="..\Hotels.ViewModels\Hotels.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

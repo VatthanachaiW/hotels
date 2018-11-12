@@ -24,7 +24,7 @@
     <ProjectReference Include="..\..\src\Hotels.DbContext\Hotels.DbConnections.csproj" />
     <ProjectReference Include="..\..\src\Hotels.Entities\Hotels.Entities.csproj" />
     <ProjectReference Include="..\..\src\Hotels.IDbConText\Hotels.IDbConnections.csproj" />
-    <ProjectReference Include="..\Hotel.Test.Utilities\Hotel.Test.Utilities.csproj" />
+    <ProjectReference Include="..\Hotel.Test.Utilities\HotelTest.Utilities.csproj" />
   </ItemGroup>
 
 </Project>

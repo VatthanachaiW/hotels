@@ -5,7 +5,7 @@ using Hotels.Entities.Masters;
 using Hotels.IDbConnections;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotel.Test.Utilities
+namespace HotelTest.Utilities
 {
     public class ApplicationDbContextHelper
     {
