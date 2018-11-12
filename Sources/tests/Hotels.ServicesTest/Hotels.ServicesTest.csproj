@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Moq" Version="4.10.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
@@ -16,11 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Hotels.DbContext\Hotels.DbConnections.csproj" />
-    <ProjectReference Include="..\..\src\Hotels.IDbConText\Hotels.IDbConnections.csproj" />
-    <ProjectReference Include="..\..\src\Hotels.IRepositories\Hotels.IRepositories.csproj" />
+    <ProjectReference Include="..\..\src\Hotels.IServices\Hotels.IServices.csproj" />
     <ProjectReference Include="..\..\src\Hotels.IUnitOfWork\Hotels.IUnitOfWorks.csproj" />
-    <ProjectReference Include="..\..\src\Hotels.Repositories\Hotels.Repositories.csproj" />
+    <ProjectReference Include="..\..\src\Hotels.Services\Hotels.Services.csproj" />
     <ProjectReference Include="..\..\src\Hotels.UnitOfWork\Hotels.UnitOfWorks.csproj" />
     <ProjectReference Include="..\Hotel.Test.Utilities\Hotels.TestUtilities.csproj" />
   </ItemGroup>

@@ -6,7 +6,7 @@ using Hotels.Entities.Masters;
 using Hotels.IDbConnections;
 using Hotels.IRepositories;
 using Hotels.Repositories;
-using HotelTest.Utilities;
+using Hotels.TestUtilities;
 using Xunit;
 
 namespace Hotels.RepositoriesTest

@@ -7,6 +7,7 @@ using AutoMapper;
 using Hotels.Entities.Masters;
 using Hotels.IServices;
 using Hotels.IUnitOfWorks;
+using Hotels.Utilities;
 using Hotels.ViewModels;
 using Microsoft.Extensions.Logging;
 
@@ -32,7 +33,8 @@ namespace Hotels.Services
             return UnitOfWork.RoomTypeRepository.GetAll().Select(s => new RoomTypeViewModel
             {
                 RoomTypeId = s.Id,
-                RoomTypeName = s.RoomTypeName
+                RoomTypeName = s.RoomTypeName,
+                CreateBy = s.CreateBy
             }).ToList();
         }
 
@@ -43,7 +45,8 @@ namespace Hotels.Services
             return roomTypes.Select(s => new RoomTypeViewModel
             {
                 RoomTypeId = s.Id,
-                RoomTypeName = s.RoomTypeName
+                RoomTypeName = s.RoomTypeName,
+                CreateBy = s.CreateBy
             }).ToList();
         }
 
@@ -65,6 +68,8 @@ namespace Hotels.Services
         {
             try
             {
+                if (ObjectValidate.IsAnyNullOrEmpty(roomType)) throw new Exception("Invalid data exception");
+
                 IMapper iMapper = MapperConfiguration.CreateMapper();
                 var tmp = iMapper.Map<RoomTypeViewModel, RoomType>(roomType);
                 await UnitOfWork.RoomTypeRepository.AddAsync(tmp);
@@ -84,11 +89,13 @@ namespace Hotels.Services
         {
             try
             {
-                IMapper iMapper = MapperConfiguration.CreateMapper();
-                var exist = await UnitOfWork.RoomTypeRepository.GetByIdAsync(roomType.RoomTypeId);
+                if (roomType == null) throw new DataException("Invalid data exception");
+
+                var exist = await UnitOfWork.RoomTypeRepository.GetByIdAsync(roomType.RoomTypeId.Value);
                 if (exist != null)
                 {
-                    exist = iMapper.Map<RoomTypeViewModel, RoomType>(roomType);
+                    exist.RoomTypeName = roomType.RoomTypeName;
+                    exist.Modified(roomType.UpdateBy.Value);
 
                     UnitOfWork.RoomTypeRepository.Update(exist);
                     return await UnitOfWork.CommitAsync();
@@ -110,12 +117,13 @@ namespace Hotels.Services
         {
             try
             {
-                IMapper iMapper = MapperConfiguration.CreateMapper();
-                var exist = await UnitOfWork.RoomTypeRepository.GetByIdAsync(roomType.RoomTypeId);
+                if (roomType == null) throw new DataException("Invalid data exception");
+
+                var exist = await UnitOfWork.RoomTypeRepository.GetByIdAsync(roomType.RoomTypeId.Value);
                 if (exist != null)
                 {
-                    exist = iMapper.Map<RoomTypeViewModel, RoomType>(roomType);
                     exist.IsActive = false;
+                    exist.Modified(roomType.UpdateBy.Value);
 
                     UnitOfWork.RoomTypeRepository.Update(exist);
                     return await UnitOfWork.CommitAsync();

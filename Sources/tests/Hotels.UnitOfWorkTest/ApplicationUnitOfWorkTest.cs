@@ -5,8 +5,8 @@ using Hotels.IDbConnections;
 using Hotels.IRepositories;
 using Hotels.IUnitOfWorks;
 using Hotels.Repositories;
+using Hotels.TestUtilities;
 using Hotels.UnitOfWorks;
-using HotelTest.Utilities;
 using Xunit;
 
 namespace Hotels.UnitOfWorkTest
@@ -64,14 +64,6 @@ namespace Hotels.UnitOfWorkTest
             _unitOfWork.Rollback();
 
             Assert.Null(_unitOfWork.RoomTypeRepository.Get(s => s.RoomTypeName == "Room"));
-        }
-
-        [Fact]
-        public void GenericRepositoryTest()
-        {
-            var roomTypeRepository = _unitOfWork.Repository<RoomTypeRepository>();
-            
-            Assert.NotNull(roomTypeRepository.GetAll());
         }
     }
 }

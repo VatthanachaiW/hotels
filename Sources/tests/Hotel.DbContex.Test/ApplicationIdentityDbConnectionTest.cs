@@ -3,7 +3,7 @@ using System.Linq;
 using Hotels.Entities.Audits;
 using Hotels.Entities.Masters;
 using Hotels.IDbConnections;
-using HotelTest.Utilities;
+using Hotels.TestUtilities;
 using Xunit;
 
 namespace Hotels.DbContextTest

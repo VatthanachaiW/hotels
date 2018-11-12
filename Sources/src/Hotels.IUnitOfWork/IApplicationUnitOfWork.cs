@@ -9,10 +9,10 @@ namespace Hotels.IUnitOfWorks
         Task<bool> CommitAsync();
 
         void Rollback();
-
+        /*
         [Obsolete("Not implement method for now")]
         T Repository<T>() where T : class;
-
+        */
         IRoomTypeRepository RoomTypeRepository { get; }
     }
 }

@@ -20,7 +20,7 @@ namespace Hotels.UnitOfWorks
         {
             _context = context;
         }
-
+        /*
         [Obsolete("Not implement method for now")]
         public T Repository<T>() where T : class
         {
@@ -38,7 +38,7 @@ namespace Hotels.UnitOfWorks
 
             return null;
         }
-
+        */
         public async Task<bool> CommitAsync()
         {
             return await _context.SaveChangesAsync();
