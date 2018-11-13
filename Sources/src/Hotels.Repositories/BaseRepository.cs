@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Hotels.Entities;
+using Hotels.Entities.Masters;
 using Hotels.IDbConnections;
 using Hotels.IRepositories;
 using Microsoft.EntityFrameworkCore;

@@ -11,7 +11,7 @@ namespace Hotels.ViewModelTest
         public void PropertiesValidationShouldBeFail()
         {
             var roomType = new RoomTypeViewModel();
-            Assert.NotEqual(0, ModelValidateHelper.Validation(roomType).Count);
+            Assert.NotEqual(0, ViewModelValidator.Validation(roomType).Count);
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace Hotels.ViewModelTest
                 RoomTypeName = "Room Type"
             };
 
-            Assert.Equal(0, ModelValidateHelper.Validation(roomType).Count);
+            Assert.Equal(0, ViewModelValidator.Validation(roomType).Count);
         }
     }
 }

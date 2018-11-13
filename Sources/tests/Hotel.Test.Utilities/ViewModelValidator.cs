@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hotels.TestUtilities
 {
-    public class ModelValidateHelper
+    public class ViewModelValidator
     {
         public static IList<ValidationResult> Validation(object model)
         {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace Hotels.Entities
+namespace Hotels.Entities.Profiles
 {
     public class ApplicationUser : IdentityUser<Guid>
     {

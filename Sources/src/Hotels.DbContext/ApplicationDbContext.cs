@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Hotels.Entities;
 using Hotels.Entities.Audits;
 using Hotels.Entities.Masters;
+using Hotels.Entities.Profiles;
 using Hotels.IDbConnections;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -125,6 +126,7 @@ namespace Hotels.DbConnections
             builder.Entity<Room>(RoomConfigure);
             builder.Entity<RoomPrice>(RoomPriceConfigure);
             builder.Entity<Receipt>(ReceiptConfigure);
+            builder.Entity<Hotel>(HotelConfigure);
 
             base.OnModelCreating(builder);
         }
@@ -270,7 +272,7 @@ namespace Hotels.DbConnections
             builder.Property(p => p.Firstname).HasColumnName("firstname");
             builder.Property(p => p.Lastname).HasColumnName("lastname");
             builder.Property(p => p.Address).HasColumnName("address");
-            builder.Property(p => p.ProvinceCode).HasColumnName("province_code");
+            builder.Property(p => p.PostalCode).HasColumnName("postal_code");
             builder.Property(p => p.Mobile).HasColumnName("mobile");
             builder.Property(p => p.Email).HasColumnName("email");
             builder.Property(p => p.CheckIn).HasColumnName("check_in");
@@ -297,6 +299,22 @@ namespace Hotels.DbConnections
 
             builder.HasOne(o => o.Room).WithMany(m => m.Receipts).HasForeignKey(f => f.RoomId);
             builder.HasOne(o => o.Price).WithMany(m => m.Receipts).HasForeignKey(f => f.PriceId);
+        }
+
+        private void HotelConfigure(EntityTypeBuilder<Hotel> builder)
+        {
+            builder.ToTable("tb_hotels");
+            builder.HasKey(k => k.Id);
+            builder.Property(p => p.Id)
+                .HasColumnName("hotel_id")
+                .ValueGeneratedOnAdd();
+
+            builder.Property(p => p.HotelName).HasColumnName("hotel_name");
+            builder.Property(p => p.Address).HasColumnName("hotel_address");
+            builder.Property(p => p.PostalCode).HasColumnName("hotel_postal_code");
+            builder.Property(p => p.Phone).HasColumnName("hotel_phone");
+            builder.Property(p => p.Fax).HasColumnName("hotel_fax");
+            builder.Property(p => p.Email).HasColumnName("hotel_email");
         }
     }
 }

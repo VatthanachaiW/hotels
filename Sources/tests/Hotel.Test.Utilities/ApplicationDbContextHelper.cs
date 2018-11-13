@@ -137,7 +137,7 @@ namespace Hotels.TestUtilities
                     Firstname = "Robby",
                     Lastname = "Will",
                     Address = "123 Panama",
-                    ProvinceCode = "12345",
+                    PostalCode = "12345",
                     Email = "robby.w@abc.com",
                     Mobile = "012-345-6789",
                     PaidPrice = 450m
