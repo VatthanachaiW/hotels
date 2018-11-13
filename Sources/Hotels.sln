@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastructures", "{0BF38C07-2073-450B-A1CE-BE5C8CBA1D52}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{CDE85B07-250D-449B-B95B-032FCF4281FF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UIs", "UIs", "{CDE85B07-250D-449B-B95B-032FCF4281FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dockers", "Dockers", "{955C8D89-2741-475B-AF60-48BC720DE8B7}"
 EndProject
@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitOfWorks", "UnitOfWorks"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{3F710820-22F2-4587-B160-16E68A14CF9E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{6C49645F-7565-449C-8B97-8F1702E6E3D6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{6C49645F-7565-449C-8B97-8F1702E6E3D6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C96E5FB3-3F2B-4B56-B4A3-AA9AEF786FA3}"
 EndProject
@@ -41,23 +41,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.RepositoriesTest", "tests\Hotels.RepositoriesTest\Hotels.RepositoriesTest.csproj", "{84B5BC87-1826-44A1-B1DE-FB7FB02673D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.IUnitOfWorks", "src\Hotels.IUnitOfWork\Hotels.IUnitOfWorks.csproj", "{30673788-D184-4BD3-ACC9-73BA8F753861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.IUnitOfWorks", "src\Hotels.IUnitOfWork\Hotels.IUnitOfWorks.csproj", "{30673788-D184-4BD3-ACC9-73BA8F753861}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.UnitOfWorks", "src\Hotels.UnitOfWork\Hotels.UnitOfWorks.csproj", "{D93F5A04-57DC-45A1-AD76-F805893320EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.UnitOfWorks", "src\Hotels.UnitOfWork\Hotels.UnitOfWorks.csproj", "{D93F5A04-57DC-45A1-AD76-F805893320EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.UnitOfWorkTest", "tests\Hotels.UnitOfWorkTest\Hotels.UnitOfWorkTest.csproj", "{66987A72-DD1C-49AA-A9E8-5CE1E9EC1B0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.UnitOfWorkTest", "tests\Hotels.UnitOfWorkTest\Hotels.UnitOfWorkTest.csproj", "{66987A72-DD1C-49AA-A9E8-5CE1E9EC1B0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.IServices", "src\Hotels.IServices\Hotels.IServices.csproj", "{16624A32-90F9-4BE7-82B6-078A304077AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.IServices", "src\Hotels.IServices\Hotels.IServices.csproj", "{16624A32-90F9-4BE7-82B6-078A304077AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.ViewModels", "src\Hotels.ViewModels\Hotels.ViewModels.csproj", "{9756908B-1A0A-4B38-835E-799545C7C642}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.ViewModels", "src\Hotels.ViewModels\Hotels.ViewModels.csproj", "{9756908B-1A0A-4B38-835E-799545C7C642}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.Services", "src\Hotels.Services\Hotels.Services.csproj", "{90A4F4B8-8721-4304-9195-E7D4F0241CB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.Services", "src\Hotels.Services\Hotels.Services.csproj", "{90A4F4B8-8721-4304-9195-E7D4F0241CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.ServicesTest", "tests\Hotels.ServicesTest\Hotels.ServicesTest.csproj", "{4E3E4FE9-3CBB-4B9B-AA62-19615931ED37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.ServicesTest", "tests\Hotels.ServicesTest\Hotels.ServicesTest.csproj", "{4E3E4FE9-3CBB-4B9B-AA62-19615931ED37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.Utilities", "src\Hotels.Utilities\Hotels.Utilities.csproj", "{590799A4-2464-45B0-A746-094D244C6341}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.Utilities", "src\Hotels.Utilities\Hotels.Utilities.csproj", "{590799A4-2464-45B0-A746-094D244C6341}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.ViewModelTest", "tests\Hotels.ViewModelTest\Hotels.ViewModelTest.csproj", "{0C9FE3BD-0B48-4F15-AA23-ACEBDED92426}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.ViewModelTest", "tests\Hotels.ViewModelTest\Hotels.ViewModelTest.csproj", "{0C9FE3BD-0B48-4F15-AA23-ACEBDED92426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

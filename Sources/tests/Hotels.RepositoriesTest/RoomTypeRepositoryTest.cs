@@ -11,15 +11,15 @@ using Xunit;
 
 namespace Hotels.RepositoriesTest
 {
-    public class BaseRepositoryTest
+    public class RoomTypeRepositoryTest
     {
         private IApplicationDbContext _context;
-        private IBaseRepository<RoomType> _repository;
+        private IRoomTypeRepository _repository;
 
-        public BaseRepositoryTest()
+        public RoomTypeRepositoryTest()
         {
             _context = new ApplicationDbContextHelper().DbContext();
-            _repository = new BaseRepository<RoomType>(_context);
+            _repository = new RoomTypeRepository(_context);
         }
 
         [Fact]

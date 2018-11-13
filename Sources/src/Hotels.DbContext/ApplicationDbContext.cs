@@ -122,13 +122,16 @@ namespace Hotels.DbConnections
             builder.Entity<AuditTrail>(AuditTrailLogConfigure);
 
             builder.Entity<RoomType>(RoomTypeConfigure);
+            builder.Entity<Room>(RoomConfigure);
+            builder.Entity<RoomPrice>(RoomPriceConfigure);
+            builder.Entity<Receipt>(ReceiptConfigure);
 
             base.OnModelCreating(builder);
         }
 
         private void AuditTrailLogConfigure(EntityTypeBuilder<AuditTrail> builder)
         {
-            builder.ToTable("tb_Audit_Trails");
+            builder.ToTable("tb_audit_trails");
 
             builder.HasKey(k => k.Id);
             builder.Property(p => p.Id)
@@ -157,7 +160,7 @@ namespace Hotels.DbConnections
 
         private void RoomTypeConfigure(EntityTypeBuilder<RoomType> builder)
         {
-            builder.ToTable("tb_Room_types");
+            builder.ToTable("tb_room_types");
 
             builder.HasKey(k => k.Id);
             builder.Property(p => p.Id)
@@ -184,6 +187,116 @@ namespace Hotels.DbConnections
 
             builder.Property(p => p.ModifiedOn)
                 .HasColumnName("room_type_modified_on");
+        }
+
+        private void RoomConfigure(EntityTypeBuilder<Room> builder)
+        {
+            builder.ToTable("tb_rooms");
+
+            builder.HasKey(k => k.Id);
+            builder.Property(p => p.Id)
+                .HasColumnName("room_id")
+                .ValueGeneratedOnAdd();
+
+            builder.Property(p => p.RoomCode).HasColumnName("room_code");
+            builder.Property(p => p.Description).HasColumnName("room_description");
+            builder.Property(p => p.RoomTypeId).HasColumnName("room_type_id");
+
+            builder.Property(p => p.IsActive)
+                .HasColumnName("room_is_active")
+                .HasDefaultValue(true);
+
+            builder.Property(p => p.CreateBy)
+                .HasColumnName("room_create_by")
+                .IsRequired();
+            builder.Property(p => p.CreateOn)
+                .HasColumnName("room_create_On")
+                .IsRequired();
+
+            builder.Property(p => p.ModifiedBy)
+                .HasColumnName("room_modified_by");
+
+            builder.Property(p => p.ModifiedOn)
+                .HasColumnName("room_modified_on");
+
+            builder.HasOne(o => o.RoomType).WithMany(m => m.Rooms).HasForeignKey(f => f.RoomTypeId);
+        }
+
+        private void RoomPriceConfigure(EntityTypeBuilder<RoomPrice> builder)
+        {
+            builder.ToTable("tb_room_prices");
+            builder.HasKey(k => k.Id);
+            builder.Property(p => p.Id)
+                .HasColumnName("room_price_id")
+                .ValueGeneratedOnAdd();
+
+            builder.Property(p => p.RoomId).HasColumnName("room_id");
+            builder.Property(p => p.PriceDate).HasColumnName("price_date");
+            builder.Property(p => p.Price).HasColumnName("price");
+
+            builder.Property(p => p.IsActive)
+                .HasColumnName("room_price_is_active")
+                .HasDefaultValue(true);
+
+            builder.Property(p => p.CreateBy)
+                .HasColumnName("room_price_create_by")
+                .IsRequired();
+            builder.Property(p => p.CreateOn)
+                .HasColumnName("room_price_create_On")
+                .IsRequired();
+
+            builder.Property(p => p.ModifiedBy)
+                .HasColumnName("room_price_modified_by");
+
+            builder.Property(p => p.ModifiedOn)
+                .HasColumnName("room_price_modified_on");
+
+            builder.HasOne(o => o.Room).WithMany(m => m.RoomPrices).HasForeignKey(f => f.RoomId);
+        }
+
+        private void ReceiptConfigure(EntityTypeBuilder<Receipt> builder)
+        {
+            builder.ToTable("tb_receipt");
+
+            builder.HasKey(k => k.Id);
+            builder.Property(p => p.Id)
+                .HasColumnName("receipt_id")
+                .ValueGeneratedOnAdd();
+
+            builder.Property(p => p.ReceiptNo).HasColumnName("receipt_no");
+            builder.Property(p => p.ReceiptDate).HasColumnName("receipt_date");
+            builder.Property(p => p.RoomId).HasColumnName("room_id");
+            builder.Property(p => p.PriceId).HasColumnName("price_id");
+            builder.Property(p => p.Firstname).HasColumnName("firstname");
+            builder.Property(p => p.Lastname).HasColumnName("lastname");
+            builder.Property(p => p.Address).HasColumnName("address");
+            builder.Property(p => p.ProvinceCode).HasColumnName("province_code");
+            builder.Property(p => p.Mobile).HasColumnName("mobile");
+            builder.Property(p => p.Email).HasColumnName("email");
+            builder.Property(p => p.CheckIn).HasColumnName("check_in");
+            builder.Property(p => p.CheckOut).HasColumnName("check_out");
+            builder.Property(p => p.PaidPrice).HasColumnName("paid_price");
+
+
+            builder.Property(p => p.IsActive)
+                .HasColumnName("receipt_is_active")
+                .HasDefaultValue(true);
+
+            builder.Property(p => p.CreateBy)
+                .HasColumnName("receipt_create_by")
+                .IsRequired();
+            builder.Property(p => p.CreateOn)
+                .HasColumnName("receipt_create_On")
+                .IsRequired();
+
+            builder.Property(p => p.ModifiedBy)
+                .HasColumnName("receipt_modified_by");
+
+            builder.Property(p => p.ModifiedOn)
+                .HasColumnName("receipt_modified_on");
+
+            builder.HasOne(o => o.Room).WithMany(m => m.Receipts).HasForeignKey(f => f.RoomId);
+            builder.HasOne(o => o.Price).WithMany(m => m.Receipts).HasForeignKey(f => f.PriceId);
         }
     }
 }
