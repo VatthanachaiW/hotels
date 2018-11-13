@@ -21,43 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{6C49645F-7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C96E5FB3-3F2B-4B56-B4A3-AA9AEF786FA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.IDbConnections", "src\Hotels.IDbConText\Hotels.IDbConnections.csproj", "{3581FA23-86AC-4056-929F-1B5CF1237A98}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.DbConnections", "src\Hotels.DbContext\Hotels.DbConnections.csproj", "{F5B51E9E-343F-4CB3-BA5E-C333F06BFC06}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.Entities", "src\Hotels.Entities\Hotels.Entities.csproj", "{CD1BD69E-4EE7-4D4A-B543-30973B725E9D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{10AC3C9C-2F40-4B1D-88D0-CA810CE8980D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.DbContextTest", "tests\Hotel.DbContex.Test\Hotels.DbContextTest.csproj", "{719B1461-A688-43EC-8109-795FA9EBBF37}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.TestUtilities", "tests\Hotel.Test.Utilities\Hotels.TestUtilities.csproj", "{3911A4E0-E89E-4EAE-BC14-76D49624BB75}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.IRepositories", "src\Hotels.IRepositories\Hotels.IRepositories.csproj", "{6E5B5F8C-92A5-4FBB-85D6-8E584B1454F1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.Repositories", "src\Hotels.Repositories\Hotels.Repositories.csproj", "{B67C19BE-EC81-4AF8-81B5-4BB44FEEE2BD}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{FE06226A-10AF-40D4-B54E-F456DBEF38A7}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.RepositoriesTest", "tests\Hotels.RepositoriesTest\Hotels.RepositoriesTest.csproj", "{84B5BC87-1826-44A1-B1DE-FB7FB02673D8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.IUnitOfWorks", "src\Hotels.IUnitOfWork\Hotels.IUnitOfWorks.csproj", "{30673788-D184-4BD3-ACC9-73BA8F753861}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.UnitOfWorks", "src\Hotels.UnitOfWork\Hotels.UnitOfWorks.csproj", "{D93F5A04-57DC-45A1-AD76-F805893320EB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.UnitOfWorkTest", "tests\Hotels.UnitOfWorkTest\Hotels.UnitOfWorkTest.csproj", "{66987A72-DD1C-49AA-A9E8-5CE1E9EC1B0F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.IServices", "src\Hotels.IServices\Hotels.IServices.csproj", "{16624A32-90F9-4BE7-82B6-078A304077AE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.ViewModels", "src\Hotels.ViewModels\Hotels.ViewModels.csproj", "{9756908B-1A0A-4B38-835E-799545C7C642}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.Services", "src\Hotels.Services\Hotels.Services.csproj", "{90A4F4B8-8721-4304-9195-E7D4F0241CB6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.ServicesTest", "tests\Hotels.ServicesTest\Hotels.ServicesTest.csproj", "{4E3E4FE9-3CBB-4B9B-AA62-19615931ED37}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.Utilities", "src\Hotels.Utilities\Hotels.Utilities.csproj", "{590799A4-2464-45B0-A746-094D244C6341}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.ViewModelTest", "tests\Hotels.ViewModelTest\Hotels.ViewModelTest.csproj", "{0C9FE3BD-0B48-4F15-AA23-ACEBDED92426}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
