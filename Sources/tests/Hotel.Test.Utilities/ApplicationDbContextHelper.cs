@@ -24,8 +24,24 @@ namespace Hotels.TestUtilities
             RoomInit(context);
             RoomPriceInit(context);
             ReceiptInit(context);
-
+            HotelInit(context);
             return context;
+        }
+
+        private void HotelInit(ApplicationDbContext context)
+        {
+            var hotel = new Hotel
+            {
+                HotelName = "Wonder Swarm",
+                Address = "1234 Address",
+                Email = "w.swarm@abc.om",
+                Phone = "012-345-6789",
+                Fax = "012-345-6789",
+                PostalCode = "12345"
+            };
+
+            context.Set<Hotel>().Add(hotel);
+            context.SaveChanges();
         }
 
         private void RoomTypeInit(ApplicationDbContext context)
