@@ -87,19 +87,37 @@ namespace Hotels.TestUtilities
                 new Room
                 {
                     RoomCode = "R0010",
-                    Description = "Sample Room Demo",
+                    Description = "Sample Room Demo AA",
+                    RoomTypeId = roomtypeA.Id,
+                },
+                new Room
+                {
+                    RoomCode = "R0011",
+                    Description = "Sample Room Demo AB",
+                    RoomTypeId = roomtypeA.Id,
+                },
+                new Room
+                {
+                    RoomCode = "R0012",
+                    Description = "Sample Room Demo AC",
+                    RoomTypeId = roomtypeA.Id,
+                },
+                new Room
+                {
+                    RoomCode = "R0013",
+                    Description = "Sample Room Demo AD",
                     RoomTypeId = roomtypeA.Id,
                 },
                 new Room
                 {
                     RoomCode = "R0020",
-                    Description = "Sample Room Demo",
+                    Description = "Sample Room Demo B",
                     RoomTypeId = roomtypeB.Id,
                 },
                 new Room
                 {
                     RoomCode = "R0030",
-                    Description = "Sample Room Demo",
+                    Description = "Sample Room Demo C",
                     RoomTypeId = roomtypeC.Id,
                 }
             };
@@ -144,7 +162,7 @@ namespace Hotels.TestUtilities
                 new Receipt
                 {
                     RoomId = roomA.Id,
-                    ReceiptNo = $"{DateTime.Now:ddmmyyyy}-00001",
+                    ReceiptNo = $"R-{DateTime.Now:yyyyMMdd}-000001",
                     ReceiptDate = DateTime.Now,
                     CheckIn = DateTime.Now,
                     CheckOut = DateTime.Now.AddDays(1),
