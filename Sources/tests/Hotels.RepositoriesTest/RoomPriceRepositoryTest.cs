@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Hotels.DbConnections;
 using Hotels.Entities.Masters;
 using Hotels.IDbConnections;
 using Hotels.IRepositories;
@@ -34,7 +33,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void GetAllWithPredicateTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             Assert.True(_priceRepository.GetAll(w => w.RoomId == room.Id).Any());
         }
 
@@ -48,7 +47,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public async Task GetAllAsyncWithPredicateTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var prices = await _priceRepository.GetAllAsync(w => w.RoomId == room.Id);
             Assert.True(prices.Any());
         }
@@ -56,7 +55,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void GetWithPredicateTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var price = _priceRepository.Get(s => s.RoomId == room.Id);
             Assert.NotNull(price);
         }
@@ -64,7 +63,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public async Task GetAsyncWithPredicateTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var price = await _priceRepository.GetAsync(s => s.RoomId == room.Id);
             Assert.NotNull(price);
         }
@@ -72,7 +71,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void GetByIdTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var price = _priceRepository.GetAll().FirstOrDefault(s => s.RoomId == room.Id);
             Assert.NotNull(price);
 
@@ -84,7 +83,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public async Task GetByIdAsyncTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var price = _priceRepository.GetAll().FirstOrDefault(s => s.RoomId == room.Id);
             Assert.NotNull(price);
 
@@ -96,7 +95,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void AddNewTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var price = new RoomPrice
             {
                 Price = 500,
@@ -113,7 +112,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public async Task AddNewAsyncTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var price = new RoomPrice
             {
                 Price = 500,
@@ -130,8 +129,9 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void AddNewRangeTest()
         {
-            var roomA = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
-            var roomB = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0020");
+            var roomA = _roomRepository.Get(s => s.RoomCode == "R0010");
+            var roomB = _roomRepository.Get(s => s.RoomCode == "R0020");
+
             var price = new List<RoomPrice>
             {
                 new RoomPrice
@@ -156,8 +156,9 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public async Task AddNewRangeAsyncTest()
         {
-            var roomA = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
-            var roomB = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0020");
+            var roomA = _roomRepository.Get(s => s.RoomCode == "R0010");
+            var roomB = _roomRepository.Get(s => s.RoomCode == "R0020");
+
             var price = new List<RoomPrice>
             {
                 new RoomPrice
@@ -183,7 +184,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void UpdateTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var price = _priceRepository.Get(s => s.RoomId == room.Id);
 
             Assert.NotNull(price);
@@ -196,7 +197,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void UpdateRangeTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var prices = _priceRepository.GetAll(s => s.RoomId == room.Id);
             Assert.NotNull(prices);
 
@@ -208,7 +209,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void RemoveTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var price = _priceRepository.Get(s => s.RoomId == room.Id);
             Assert.NotNull(price);
 
@@ -219,7 +220,7 @@ namespace Hotels.RepositoriesTest
         [Fact]
         public void RemoveRangeTest()
         {
-            var room = _context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
+            var room = _roomRepository.Get(s => s.RoomCode == "R0010");
             var prices = _priceRepository.GetAll(s => s.RoomId == room.Id);
             Assert.NotNull(prices);
 
