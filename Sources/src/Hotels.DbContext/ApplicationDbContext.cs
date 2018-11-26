@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Hotels.Entities;
 using Hotels.Entities.Audits;
 using Hotels.Entities.Masters;
 using Hotels.Entities.Profiles;
@@ -15,13 +14,16 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Hotels.DbConnections
 {
+    // ApplicationDbContext มีการสืบทอดจาก Identity Library โดยจะมีการกำหนด PK เป็น DataType แบบ GUID และสืบทอดจาก IApplicationDbContext
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, Guid, ApplicationUserClaim,
         ApplicationUserRole, ApplicationUserLogin, ApplicationRoleClaim, ApplicationUserToken>, IApplicationDbContext
     {
+        // Constructor ของ ApplicationDbContext จะมีการกำหนด DbContextOptions เพื่อเอาไว้กำหนด เงื่อนไขการเชื่อมต่อต่างๆ
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
 
+        //Override SaveChangesAsync ใหม่ เพื่อให้สามารถบันทึกข้อมูล AuditTrail ได้
         public override async Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
             CancellationToken cancellationToken = new CancellationToken())
         {
@@ -31,9 +33,7 @@ namespace Hotels.DbConnections
             return result;
         }
 
-        public async Task<bool> SaveChangesAsync() => await base.SaveChangesAsync() > 0;
-
-
+        // บันทึกข้องมูล AuditTrail หลังจากทำการบันทึกข้อมูลของ Entity แล้ว
         private Task OnAfterSaveChangesAsync(List<AuditTrailEntry> auditEntries)
         {
             if (auditEntries == null || auditEntries.Count == 0) return Task.CompletedTask;
@@ -58,10 +58,15 @@ namespace Hotels.DbConnections
             return SaveChangesAsync();
         }
 
+        // สำหรับการเตรียมข้อมูล AudiTrail เพื่อบันทึกข้อมูล
+        // การทำงานหลักๆ คือตรวจสอบข้อมูลที่รับเข้ามาว่ามีการเปลี่ยนแปลงหรือเพิ่มข้อมูลใหม่หรือไม่
+        // หากมีการเปลี่ยนปลง ก็จะทำการตรวจสอบว่า Field ไหนที่มีการเปลี่ยนแปลง
+        // และจากนั้นก็จะเก็บเป็น List แล้วส่งกลับ
         private List<AuditTrailEntry> OnBeforeSaveChange()
         {
             ChangeTracker.DetectChanges();
             var auditEntries = new List<AuditTrailEntry>();
+
             foreach (var entry in ChangeTracker.Entries())
             {
                 if (entry.Entity is AuditTrail || entry.State == EntityState.Detached ||
@@ -118,19 +123,30 @@ namespace Hotels.DbConnections
             return auditEntries.Where(_ => _.HasTemporaryProperties).ToList();
         }
 
+        // บันทึกข้อมูล และ Return ผลการทำงานเป็น boolean เพื่อเอาไว้ตรวจสอบผมการทำงาน
+        public async Task<bool> SaveChangesAsync() => await base.SaveChangesAsync() > 0;
+
+        //ทำการ Mapping Entitie และ SQL Table
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            // AuditTrail Mapping
             builder.Entity<AuditTrail>(AuditTrailLogConfigure);
 
+            // RoomType Mapping
             builder.Entity<RoomType>(RoomTypeConfigure);
+            // Room Mapping
             builder.Entity<Room>(RoomConfigure);
+            // RoomPrice Mapping
             builder.Entity<RoomPrice>(RoomPriceConfigure);
+            // Receipt Mapping
             builder.Entity<Receipt>(ReceiptConfigure);
+            // Hotel Mapping
             builder.Entity<Hotel>(HotelConfigure);
 
             base.OnModelCreating(builder);
         }
 
+        // AuditTrail Mapping
         private void AuditTrailLogConfigure(EntityTypeBuilder<AuditTrail> builder)
         {
             builder.ToTable("tb_audit_trails");
@@ -160,6 +176,7 @@ namespace Hotels.DbConnections
                 .IsRequired();
         }
 
+        // RoomType Mapping
         private void RoomTypeConfigure(EntityTypeBuilder<RoomType> builder)
         {
             builder.ToTable("tb_room_types");
@@ -191,6 +208,7 @@ namespace Hotels.DbConnections
                 .HasColumnName("room_type_modified_on");
         }
 
+        // Room Mapping
         private void RoomConfigure(EntityTypeBuilder<Room> builder)
         {
             builder.ToTable("tb_rooms");
@@ -224,6 +242,7 @@ namespace Hotels.DbConnections
             builder.HasOne(o => o.RoomType).WithMany(m => m.Rooms).HasForeignKey(f => f.RoomTypeId);
         }
 
+        // RoomPrice Mapping
         private void RoomPriceConfigure(EntityTypeBuilder<RoomPrice> builder)
         {
             builder.ToTable("tb_room_prices");
@@ -256,6 +275,7 @@ namespace Hotels.DbConnections
             builder.HasOne(o => o.Room).WithMany(m => m.RoomPrices).HasForeignKey(f => f.RoomId);
         }
 
+        // Receipt Mapping
         private void ReceiptConfigure(EntityTypeBuilder<Receipt> builder)
         {
             builder.ToTable("tb_receipt");
@@ -301,6 +321,7 @@ namespace Hotels.DbConnections
             builder.HasOne(o => o.Price).WithMany(m => m.Receipts).HasForeignKey(f => f.PriceId);
         }
 
+        // Hotel Mapping
         private void HotelConfigure(EntityTypeBuilder<Hotel> builder)
         {
             builder.ToTable("tb_hotels");

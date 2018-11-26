@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Hotels.DbConnections;
 using Hotels.Entities.Masters;
+using Hotels.Entities.Profiles;
 using Hotels.IDbConnections;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hotels.TestUtilities
@@ -12,6 +14,7 @@ namespace Hotels.TestUtilities
     {
         public IApplicationDbContext DbContext()
         {
+            // กำหนดให้ใช้ Database แบบ In-Memory
             var option = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid()
                     .ToString())
@@ -20,14 +23,40 @@ namespace Hotels.TestUtilities
 
             var context = new ApplicationDbContext(option);
 
-            RoomTypeInit(context);
-            RoomInit(context);
-            RoomPriceInit(context);
-            ReceiptInit(context);
+            //User Initial
+            UserInit(context);
 
+            //RoomType Initial
+            RoomTypeInit(context);
+
+            //Room Initial
+            RoomInit(context);
+
+            //RoomPrice Initial
+            RoomPriceInit(context);
+
+            //Receipt Initial
+            ReceiptInit(context);
             return context;
         }
 
+        private void UserInit(ApplicationDbContext context)
+        {
+            string useradmin = "admin@hoteldemo.com";
+
+            var user = new ApplicationUser
+            {
+                UserName = useradmin,
+                Email = useradmin,
+                Firstname = "Admin",
+                Lastname = "System",
+                EmailConfirmed = true,
+                LockoutEnabled = false
+            };
+
+            context.Set<ApplicationUser>().Add(user);
+        }
+        //RoomType Initial
         private void RoomTypeInit(ApplicationDbContext context)
         {
             var roomTypes = new List<RoomType>
@@ -55,11 +84,11 @@ namespace Hotels.TestUtilities
             };
 
             roomTypes.ForEach(s => s.Created(Guid.NewGuid()));
-
             context.Set<RoomType>().AddRange(roomTypes);
             context.SaveChanges();
         }
 
+        //Room Initial
         private void RoomInit(ApplicationDbContext context)
         {
             var roomtypeA = context.Set<RoomType>().FirstOrDefault(s => s.RoomTypeName == "Room Type A");
@@ -93,6 +122,7 @@ namespace Hotels.TestUtilities
             context.SaveChanges();
         }
 
+        //RoomPrice Initial
         private void RoomPriceInit(ApplicationDbContext context)
         {
             var roomA = context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
@@ -119,10 +149,12 @@ namespace Hotels.TestUtilities
             context.SaveChanges();
         }
 
+        //Receipt Initial
         private void ReceiptInit(ApplicationDbContext context)
         {
             var roomA = context.Set<Room>().FirstOrDefault(s => s.RoomCode == "R0010");
             var priceA = context.Set<RoomPrice>().FirstOrDefault(s => s.RoomId == roomA.Id);
+
             var receipts = new List<Receipt>
             {
                 new Receipt
