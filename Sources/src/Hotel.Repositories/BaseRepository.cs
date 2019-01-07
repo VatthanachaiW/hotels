@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Hotel.IRepositories;
 using Hotels.Entities.Masters;
 using Hotels.IDbConnections;
+using Hotels.IRepositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace Hotel.Repositories
+namespace Hotels.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity //กำหนดว่าจะใช้งานเฉพาะ class ที่ Implement มาจาก BaseEntity เท่านั้น
     {

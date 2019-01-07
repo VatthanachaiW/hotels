@@ -35,9 +35,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.TestUtilities", "tes
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{FE06226A-10AF-40D4-B54E-F456DBEF38A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.IRepositories", "src\Hotel.IRepositories\Hotel.IRepositories.csproj", "{F11C11CF-2EB3-4343-9AC1-CDCADD4C8E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.IRepositories", "src\Hotel.IRepositories\Hotels.IRepositories.csproj", "{F11C11CF-2EB3-4343-9AC1-CDCADD4C8E96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotel.Repositories", "src\Hotel.Repositories\Hotel.Repositories.csproj", "{78CD9B43-1BA2-4B7A-B772-02A99D68D6EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hotels.Repositories", "src\Hotel.Repositories\Hotels.Repositories.csproj", "{78CD9B43-1BA2-4B7A-B772-02A99D68D6EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hotels.RepositoriesTest", "tests\Hotels.RepositoriesTest\Hotels.RepositoriesTest.csproj", "{60E9CA6F-A2E2-4227-8061-856543C6EFE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{78CD9B43-1BA2-4B7A-B772-02A99D68D6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78CD9B43-1BA2-4B7A-B772-02A99D68D6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78CD9B43-1BA2-4B7A-B772-02A99D68D6EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60E9CA6F-A2E2-4227-8061-856543C6EFE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60E9CA6F-A2E2-4227-8061-856543C6EFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60E9CA6F-A2E2-4227-8061-856543C6EFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60E9CA6F-A2E2-4227-8061-856543C6EFE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{3911A4E0-E89E-4EAE-BC14-76D49624BB75} = {10AC3C9C-2F40-4B1D-88D0-CA810CE8980D}
 		{F11C11CF-2EB3-4343-9AC1-CDCADD4C8E96} = {738B8E4D-87C9-4416-9FA6-2037C98F678B}
 		{78CD9B43-1BA2-4B7A-B772-02A99D68D6EA} = {738B8E4D-87C9-4416-9FA6-2037C98F678B}
+		{60E9CA6F-A2E2-4227-8061-856543C6EFE5} = {10AC3C9C-2F40-4B1D-88D0-CA810CE8980D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {340DDFA3-5E8B-4A70-A67A-AA09BD143C31}

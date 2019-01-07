@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hotel.IRepositories\Hotel.IRepositories.csproj" />
+    <ProjectReference Include="..\Hotel.IRepositories\Hotels.IRepositories.csproj" />
     <ProjectReference Include="..\Hotels.Entities\Hotels.Entities.csproj" />
     <ProjectReference Include="..\Hotels.IDbConText\Hotels.IDbConnections.csproj" />
   </ItemGroup>

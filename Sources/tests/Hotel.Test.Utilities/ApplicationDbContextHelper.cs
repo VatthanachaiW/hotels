@@ -26,6 +26,9 @@ namespace Hotels.TestUtilities
             //User Initial
             UserInit(context);
 
+            //Hotel Initial
+            HotelInit(context);
+
             //RoomType Initial
             RoomTypeInit(context);
 
@@ -38,6 +41,25 @@ namespace Hotels.TestUtilities
             //Receipt Initial
             ReceiptInit(context);
             return context;
+        }
+
+        private void HotelInit(ApplicationDbContext context)
+        {
+            var hotels = new List<Hotel>
+            {
+                new Hotel
+                {
+                    HotelName = "ABC Hotel",
+                    Address = "1234",
+                    Email = "abc@xyz.com",
+                    PostalCode = "12345",
+                    Fax = "01-234-567-89"
+                },
+            };
+            hotels.ForEach(s => s.Created(Guid.NewGuid()));
+
+            context.Set<Hotel>().AddRange(hotels);
+            context.SaveChanges();
         }
 
         private void UserInit(ApplicationDbContext context)
@@ -55,7 +77,9 @@ namespace Hotels.TestUtilities
             };
 
             context.Set<ApplicationUser>().Add(user);
+            context.SaveChanges();
         }
+
         //RoomType Initial
         private void RoomTypeInit(ApplicationDbContext context)
         {
@@ -160,7 +184,7 @@ namespace Hotels.TestUtilities
                 new Receipt
                 {
                     RoomId = roomA.Id,
-                    ReceiptNo = $"{DateTime.Now:ddmmyyyy}-00001",
+                    ReceiptNo = $"R-{DateTime.Now:ddmmyyyy}-000001",
                     ReceiptDate = DateTime.Now,
                     CheckIn = DateTime.Now,
                     CheckOut = DateTime.Now.AddDays(1),
@@ -173,6 +197,23 @@ namespace Hotels.TestUtilities
                     Email = "robby.w@abc.com",
                     Mobile = "012-345-6789",
                     PaidPrice = 450m
+                },
+                new Receipt
+                {
+                    RoomId = roomA.Id,
+                    ReceiptNo = $"R-{DateTime.Now:ddmmyyyy}-000002",
+                    ReceiptDate = DateTime.Now,
+                    CheckIn = DateTime.Now,
+                    CheckOut = DateTime.Now.AddDays(1),
+                    PriceId = priceA.Id,
+
+                    Firstname = "Robby",
+                    Lastname = "Will",
+                    Address = "123 Panama",
+                    PostalCode = "12345",
+                    Email = "robby.w@abc.com",
+                    Mobile = "012-345-6789",
+                    PaidPrice = 300m
                 },
             };
 

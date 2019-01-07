@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Hotel.IRepositories
+namespace Hotels.IRepositories
 {
     //Generic Class ทำให้สามารถรับ Entity ต่างๆ เข้ามาทำงานได้
     public interface IBaseRepository<T> : IDisposable
